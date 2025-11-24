@@ -3,6 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Convoy Brand Colors - Teal Theme */
+  --convoy-primary: #00D9A0;
+  --convoy-primary-dark: #00B388;
+  --convoy-primary-light: #00F5B8;
+  --convoy-secondary: #00C9D4;
+  --convoy-accent: #0DE5A0;
+  --convoy-text-dark: #1a1a1a;
+  --convoy-text-gray: #6b7280;
+  --convoy-bg-light: #f9fafb;
 }
 
 @theme inline {
@@ -10,6 +20,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Convoy Custom Colors */
+  --color-convoy-primary: var(--convoy-primary);
+  --color-convoy-primary-dark: var(--convoy-primary-dark);
+  --color-convoy-primary-light: var(--convoy-primary-light);
+  --color-convoy-secondary: var(--convoy-secondary);
+  --color-convoy-accent: var(--convoy-accent);
 }
 
 @media (prefers-color-scheme: dark) {
