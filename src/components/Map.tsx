@@ -17,7 +17,7 @@ const icon = L.icon({
   shadowSize: [41, 41],
 });
 
-const mapVariants = cva("rounded-lg overflow-hidden border border-gray-300 relative z-10", {
+const mapVariants = cva("rounded-2xl overflow-hidden border border-gray-200 relative z-10 shadow-elevation-3", {
   variants: {
     size: {
       sm: "h-64",
