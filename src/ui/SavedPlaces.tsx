@@ -20,7 +20,7 @@ const iconMap = {
   work: "💼",
   gym: "💪",
   restaurant: "🍽️",
-  custom: "📍",
+  custom: "📍"
 };
 
 const defaultPlaces: SavedPlace[] = [
@@ -29,27 +29,27 @@ const defaultPlaces: SavedPlace[] = [
     name: "Home",
     address: "123 Main Street, Downtown",
     icon: "home",
-    category: "Frequent",
+    category: "Frequent"
   },
   {
     id: "2",
     name: "Office",
     address: "456 Business Ave, CBD",
     icon: "work",
-    category: "Frequent",
+    category: "Frequent"
   },
   {
     id: "3",
     name: "Fitness First Gym",
     address: "789 Health Blvd, Midtown",
     icon: "gym",
-    category: "Recent",
-  },
+    category: "Recent"
+  }
 ];
 
 export default function SavedPlaces({
   places = defaultPlaces,
-  onSelectPlace,
+  onSelectPlace
 }: SavedPlacesProps) {
   return (
     <div className="space-y-4">

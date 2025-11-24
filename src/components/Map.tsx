@@ -9,27 +9,31 @@ import { useEffect } from "react";
 // Fix for default marker icons in react-leaflet
 const icon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shadowSize: [41, 41],
+  shadowSize: [41, 41]
 });
 
-const mapVariants = cva("rounded-2xl overflow-hidden border border-gray-200 relative z-10 shadow-elevation-3", {
-  variants: {
-    size: {
-      sm: "h-64",
-      md: "h-96",
-      lg: "h-[32rem]",
-      full: "h-screen",
+const mapVariants = cva(
+  "rounded-2xl overflow-hidden border border-gray-200 relative z-10 shadow-elevation-3",
+  {
+    variants: {
+      size: {
+        sm: "h-64",
+        md: "h-96",
+        lg: "h-[32rem]",
+        full: "h-screen"
+      }
     },
-  },
-  defaultVariants: {
-    size: "md",
-  },
-});
+    defaultVariants: {
+      size: "md"
+    }
+  }
+);
 
 export interface MapProps extends VariantProps<typeof mapVariants> {
   center?: [number, number];
@@ -42,7 +46,13 @@ export interface MapProps extends VariantProps<typeof mapVariants> {
 }
 
 // Component to update map view
-function ChangeView({ center, zoom }: { center: [number, number]; zoom: number }) {
+function ChangeView({
+  center,
+  zoom
+}: {
+  center: [number, number];
+  zoom: number;
+}) {
   const map = useMap();
   useEffect(() => {
     map.setView(center, zoom);
@@ -55,7 +65,7 @@ export default function Map({
   zoom = 13,
   markers = [],
   size,
-  className,
+  className
 }: MapProps) {
   return (
     <div className={mapVariants({ size, className })}>

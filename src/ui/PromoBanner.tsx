@@ -21,7 +21,7 @@ const offers: PromoOffer[] = [
     code: "WEEKEND20",
     discount: "20%",
     expiry: "Expires in 2 days",
-    gradient: "from-purple-500 to-pink-500",
+    gradient: "from-purple-500 to-pink-500"
   },
   {
     id: "2",
@@ -30,8 +30,8 @@ const offers: PromoOffer[] = [
     code: "PREMIUM1ST",
     discount: "100%",
     expiry: "Valid for new users",
-    gradient: "from-[#00D9A0] to-[#00B388]",
-  },
+    gradient: "from-[#00D9A0] to-[#00B388]"
+  }
 ];
 
 export default function PromoBanner() {
@@ -80,7 +80,9 @@ export default function PromoBanner() {
 
               {/* Promo Code */}
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30">
-                <span className="text-xs text-white/70 font-semibold">CODE:</span>
+                <span className="text-xs text-white/70 font-semibold">
+                  CODE:
+                </span>
                 <span className="text-sm font-black text-white tracking-wider">
                   {offer.code}
                 </span>
@@ -121,10 +123,11 @@ export default function PromoBanner() {
               <button
                 key={index}
                 onClick={() => setCurrentOffer(index)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${index === currentOffer
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === currentOffer
                     ? "w-8 bg-white"
                     : "w-1.5 bg-white/40 hover:bg-white/60"
-                  }`}
+                }`}
                 aria-label={`Offer ${index + 1}`}
               />
             ))}

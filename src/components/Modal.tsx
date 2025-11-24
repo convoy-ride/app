@@ -10,9 +10,9 @@ const overlayVariants = cva(
     variants: {
       show: {
         true: "opacity-100 bg-black/50",
-        false: "opacity-0 pointer-events-none bg-black/0",
-      },
-    },
+        false: "opacity-0 pointer-events-none bg-black/0"
+      }
+    }
   }
 );
 
@@ -22,20 +22,20 @@ const modalVariants = cva(
     variants: {
       show: {
         true: "translate-y-0 md:scale-100 md:opacity-100",
-        false: "translate-y-full md:translate-y-0 md:scale-95 md:opacity-0",
+        false: "translate-y-full md:translate-y-0 md:scale-95 md:opacity-0"
       },
       size: {
         sm: "md:max-w-md",
         md: "md:max-w-lg",
         lg: "md:max-w-2xl",
         xl: "md:max-w-4xl",
-        full: "md:max-w-full md:m-4",
-      },
+        full: "md:max-w-full md:m-4"
+      }
     },
     defaultVariants: {
       show: false,
-      size: "md",
-    },
+      size: "md"
+    }
   }
 );
 
@@ -53,7 +53,7 @@ export default function Modal({
   title,
   children,
   size,
-  showCloseButton = true,
+  showCloseButton = true
 }: ModalProps) {
   const [shouldRender, setShouldRender] = useState(isOpen);
 

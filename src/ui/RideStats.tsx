@@ -15,9 +15,9 @@ interface RideStatsProps {
 
 const defaultStats: RideStats = {
   totalRides: 127,
-  totalSpent: 1849.50,
+  totalSpent: 1849.5,
   avgRating: 4.8,
-  savedTime: 38,
+  savedTime: 38
 };
 
 export default function RideStats({ stats = defaultStats }: RideStatsProps) {
@@ -27,14 +27,14 @@ export default function RideStats({ stats = defaultStats }: RideStatsProps) {
       value: stats.totalRides.toString(),
       icon: MapPin,
       color: "from-[#00D9A0] to-[#00B388]",
-      bgColor: "from-[#00B388]/10 to-[#00D9A0]/5",
+      bgColor: "from-[#00B388]/10 to-[#00D9A0]/5"
     },
     {
       label: "Total Spent",
       value: `$${stats.totalSpent.toFixed(0)}`,
       icon: DollarSign,
       color: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-500/10 to-pink-500/5",
+      bgColor: "from-purple-500/10 to-pink-500/5"
     },
     {
       label: "Avg Rating",
@@ -42,15 +42,15 @@ export default function RideStats({ stats = defaultStats }: RideStatsProps) {
       suffix: "★",
       icon: TrendingUp,
       color: "from-yellow-500 to-orange-500",
-      bgColor: "from-yellow-500/10 to-orange-500/5",
+      bgColor: "from-yellow-500/10 to-orange-500/5"
     },
     {
       label: "Hours Saved",
       value: stats.savedTime.toString(),
       icon: Clock,
       color: "from-blue-500 to-cyan-500",
-      bgColor: "from-blue-500/10 to-cyan-500/5",
-    },
+      bgColor: "from-blue-500/10 to-cyan-500/5"
+    }
   ];
 
   return (
@@ -72,13 +72,17 @@ export default function RideStats({ stats = defaultStats }: RideStatsProps) {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
-              <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${item.color} mb-2 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+              <div
+                className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${item.color} mb-2 shadow-md group-hover:scale-110 transition-transform duration-300`}
+              >
                 <Icon className="w-4 h-4 text-white" />
               </div>
 
               {/* Value */}
               <div className="flex items-baseline gap-1">
-                <span className={`text-2xl font-black bg-gradient-to-br ${item.color} bg-clip-text text-transparent`}>
+                <span
+                  className={`text-2xl font-black bg-gradient-to-br ${item.color} bg-clip-text text-transparent`}
+                >
                   {item.value}
                 </span>
                 {item.suffix && (
@@ -92,7 +96,9 @@ export default function RideStats({ stats = defaultStats }: RideStatsProps) {
               </p>
 
               {/* Hover gradient overlay */}
-              <div className={`absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-tl-full blur-xl`} />
+              <div
+                className={`absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-tl-full blur-xl`}
+              />
             </div>
           );
         })}
@@ -109,7 +115,10 @@ export default function RideStats({ stats = defaultStats }: RideStatsProps) {
         </div>
         <div className="flex-shrink-0">
           <div className="w-12 h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full" style={{ width: '67%' }} />
+            <div
+              className="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
+              style={{ width: "67%" }}
+            />
           </div>
         </div>
       </div>

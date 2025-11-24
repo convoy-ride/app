@@ -2,34 +2,29 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Clock, MessageSquare, CreditCard, User } from "lucide-react";
+import { Home, Clock, CreditCard, User } from "lucide-react";
 
 const navigationItems = [
   {
     name: "Home",
     href: "/rider",
-    icon: Home,
+    icon: Home
   },
   {
     name: "Rides",
     href: "/rider/rides",
-    icon: Clock,
-  },
-  {
-    name: "Message",
-    href: "/rider/messages",
-    icon: MessageSquare,
+    icon: Clock
   },
   {
     name: "Payment",
     href: "/rider/payment",
-    icon: CreditCard,
+    icon: CreditCard
   },
   {
     name: "Account",
     href: "/rider/account",
-    icon: User,
-  },
+    icon: User
+  }
 ];
 
 export default function RiderNavigation() {
@@ -46,20 +41,31 @@ export default function RiderNavigation() {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 md:w-full md:py-3 group relative active-scale ${isActive
+              className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 md:w-full md:py-3 group relative active-scale ${
+                isActive
                   ? "text-[#00B388] bg-[#00B388]/10"
                   : "text-gray-600 hover:text-[#00B388] hover:bg-gray-50"
-                }`}
+              }`}
             >
               {/* Active indicator pill */}
               {isActive && (
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-[#00B388] to-[#00D9A0] rounded-r-full hidden md:block animate-slide-in-right" />
               )}
 
-              <Icon className={`w-6 h-6 transition-all duration-300 ${isActive ? "stroke-[2.5] scale-110" : "group-hover:scale-110 group-hover:rotate-6"
-                }`} />
-              <span className={`text-xs transition-all duration-300 ${isActive ? "font-bold" : "font-medium group-hover:font-semibold"
-                }`}>
+              <Icon
+                className={`w-6 h-6 transition-all duration-300 ${
+                  isActive
+                    ? "stroke-[2.5] scale-110"
+                    : "group-hover:scale-110 group-hover:rotate-6"
+                }`}
+              />
+              <span
+                className={`text-xs transition-all duration-300 ${
+                  isActive
+                    ? "font-bold"
+                    : "font-medium group-hover:font-semibold"
+                }`}
+              >
                 {item.name}
               </span>
             </Link>

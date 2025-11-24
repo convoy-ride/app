@@ -2,7 +2,20 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Search, Calendar, MapPin, Star, Clock, DollarSign, Navigation2, MoreVertical, RotateCcw, MessageSquare, FileText, ArrowLeft } from "lucide-react";
+import {
+  Search,
+  Calendar,
+  MapPin,
+  Star,
+  Clock,
+  DollarSign,
+  Navigation2,
+  MoreVertical,
+  RotateCcw,
+  MessageSquare,
+  FileText,
+  ArrowLeft
+} from "lucide-react";
 import Button from "@/components/Button";
 
 interface Ride {
@@ -31,11 +44,11 @@ const mockRides: Ride[] = [
     driverName: "John Smith",
     driverRating: 4.9,
     vehicleType: "Comfort",
-    price: 18.50,
+    price: 18.5,
     distance: "8.5 km",
     duration: "15 min",
     status: "completed",
-    rating: 5,
+    rating: 5
   },
   {
     id: "2",
@@ -46,11 +59,11 @@ const mockRides: Ride[] = [
     driverName: "Sarah Johnson",
     driverRating: 4.8,
     vehicleType: "Premium",
-    price: 28.00,
+    price: 28.0,
     distance: "12.3 km",
     duration: "22 min",
     status: "completed",
-    rating: 5,
+    rating: 5
   },
   {
     id: "3",
@@ -61,11 +74,11 @@ const mockRides: Ride[] = [
     driverName: "Mike Chen",
     driverRating: 5.0,
     vehicleType: "XL",
-    price: 45.00,
+    price: 45.0,
     distance: "25.8 km",
     duration: "35 min",
     status: "completed",
-    rating: 4,
+    rating: 4
   },
   {
     id: "4",
@@ -76,10 +89,10 @@ const mockRides: Ride[] = [
     driverName: "Emma Wilson",
     driverRating: 4.7,
     vehicleType: "Economy",
-    price: 12.50,
+    price: 12.5,
     distance: "5.2 km",
     duration: "12 min",
-    status: "completed",
+    status: "completed"
   },
   {
     id: "5",
@@ -93,14 +106,16 @@ const mockRides: Ride[] = [
     price: 15.75,
     distance: "7.1 km",
     duration: "18 min",
-    status: "cancelled",
-  },
+    status: "cancelled"
+  }
 ];
 
 export default function RidesPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const [filter, setFilter] = useState<"all" | "completed" | "cancelled">("all");
+  const [filter, setFilter] = useState<"all" | "completed" | "cancelled">(
+    "all"
+  );
 
   const filteredRides = mockRides.filter((ride) => {
     const matchesSearch =
@@ -114,21 +129,21 @@ export default function RidesPage() {
   const stats = {
     total: mockRides.length,
     completed: mockRides.filter((r) => r.status === "completed").length,
-    cancelled: mockRides.filter((r) => r.status === "cancelled").length,
+    cancelled: mockRides.filter((r) => r.status === "cancelled").length
   };
 
   return (
     <div className="min-h-screen bg-white pt-28 pb-24 md:pb-8 px-4 md:px-8">
       {/* Floating Back Button */}
       <button
-        onClick={() => router.push("/rider")}
+        onClick={() => router.back()}
         className="fixed top-28 left-6 md:left-28 z-50 bg-white p-3 rounded-full border border-gray-300 shadow-sm hover:shadow-md hover:border-gray-400 transition-all duration-300 group"
         aria-label="Go back"
       >
         <ArrowLeft className="w-5 h-5 text-gray-700" />
         {/* Tooltip */}
         <span className="absolute left-full ml-3 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg">
-          Back to Home
+          Go Back
         </span>
       </button>
 
@@ -146,19 +161,25 @@ export default function RidesPage() {
         {/* Stats Cards */}
         <div className="grid grid-cols-3 gap-3 md:gap-4">
           <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-200 shadow-sm">
-            <p className="text-xs md:text-sm font-semibold text-gray-500 mb-1">Total Rides</p>
+            <p className="text-xs md:text-sm font-semibold text-gray-500 mb-1">
+              Total Rides
+            </p>
             <p className="text-2xl md:text-3xl font-bold text-gray-900">
               {stats.total}
             </p>
           </div>
           <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-200 shadow-sm">
-            <p className="text-xs md:text-sm font-semibold text-gray-500 mb-1">Completed</p>
+            <p className="text-xs md:text-sm font-semibold text-gray-500 mb-1">
+              Completed
+            </p>
             <p className="text-2xl md:text-3xl font-bold text-[#00B388]">
               {stats.completed}
             </p>
           </div>
           <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-200 shadow-sm">
-            <p className="text-xs md:text-sm font-semibold text-gray-500 mb-1">Cancelled</p>
+            <p className="text-xs md:text-sm font-semibold text-gray-500 mb-1">
+              Cancelled
+            </p>
             <p className="text-2xl md:text-3xl font-bold text-gray-400">
               {stats.cancelled}
             </p>
@@ -185,10 +206,11 @@ export default function RidesPage() {
               <button
                 key={tab}
                 onClick={() => setFilter(tab)}
-                className={`px-4 py-2 rounded-md text-sm font-semibold capitalize transition-all duration-200 ${filter === tab
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
-                  }`}
+                className={`px-4 py-2 rounded-md text-sm font-semibold capitalize transition-all duration-200 ${
+                  filter === tab
+                    ? "bg-white text-gray-900 shadow-sm"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
               >
                 {tab}
               </button>
@@ -207,19 +229,27 @@ export default function RidesPage() {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${ride.status === "completed"
-                      ? "bg-[#00B388] text-white"
-                      : "bg-gray-200 text-gray-500"
-                      }`}>
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                        ride.status === "completed"
+                          ? "bg-[#00B388] text-white"
+                          : "bg-gray-200 text-gray-500"
+                      }`}
+                    >
                       <Navigation2 className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-900">{ride.vehicleType}</p>
-                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${ride.status === "completed"
-                          ? "bg-green-50 text-green-700 border border-green-200"
-                          : "bg-gray-50 text-gray-600 border border-gray-200"
-                          }`}>
+                        <p className="font-semibold text-gray-900">
+                          {ride.vehicleType}
+                        </p>
+                        <span
+                          className={`px-2 py-0.5 rounded text-xs font-medium ${
+                            ride.status === "completed"
+                              ? "bg-green-50 text-green-700 border border-green-200"
+                              : "bg-gray-50 text-gray-600 border border-gray-200"
+                          }`}
+                        >
                           {ride.status}
                         </span>
                       </div>
@@ -245,12 +275,20 @@ export default function RidesPage() {
                     </div>
                     <div className="flex-1 space-y-3">
                       <div>
-                        <p className="text-xs text-gray-500 font-medium mb-1">From</p>
-                        <p className="text-sm font-medium text-gray-900">{ride.from}</p>
+                        <p className="text-xs text-gray-500 font-medium mb-1">
+                          From
+                        </p>
+                        <p className="text-sm font-medium text-gray-900">
+                          {ride.from}
+                        </p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 font-medium mb-1">To</p>
-                        <p className="text-sm font-medium text-gray-900">{ride.to}</p>
+                        <p className="text-xs text-gray-500 font-medium mb-1">
+                          To
+                        </p>
+                        <p className="text-sm font-medium text-gray-900">
+                          {ride.to}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -259,16 +297,28 @@ export default function RidesPage() {
                 {/* Details */}
                 <div className="grid grid-cols-3 gap-3 p-3 bg-gray-50 rounded-lg mb-4">
                   <div>
-                    <p className="text-xs text-gray-500 font-medium mb-1">Distance</p>
-                    <p className="text-sm font-semibold text-gray-900">{ride.distance}</p>
+                    <p className="text-xs text-gray-500 font-medium mb-1">
+                      Distance
+                    </p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {ride.distance}
+                    </p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 font-medium mb-1">Duration</p>
-                    <p className="text-sm font-semibold text-gray-900">{ride.duration}</p>
+                    <p className="text-xs text-gray-500 font-medium mb-1">
+                      Duration
+                    </p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {ride.duration}
+                    </p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 font-medium mb-1">Fare</p>
-                    <p className="text-sm font-semibold text-gray-900">${ride.price.toFixed(2)}</p>
+                    <p className="text-xs text-gray-500 font-medium mb-1">
+                      Fare
+                    </p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      ${ride.price.toFixed(2)}
+                    </p>
                   </div>
                 </div>
 
@@ -279,10 +329,14 @@ export default function RidesPage() {
                       {ride.driverName.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">{ride.driverName}</p>
+                      <p className="text-sm font-semibold text-gray-900">
+                        {ride.driverName}
+                      </p>
                       <div className="flex items-center gap-1">
                         <Star className="w-3.5 h-3.5 fill-gray-900 text-gray-900" />
-                        <span className="text-xs font-medium text-gray-600">{ride.driverRating}</span>
+                        <span className="text-xs font-medium text-gray-600">
+                          {ride.driverRating}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -290,13 +344,18 @@ export default function RidesPage() {
                   {/* Rating */}
                   {ride.rating && (
                     <div className="flex items-center gap-1">
-                      <span className="text-xs text-gray-500 font-medium">You rated:</span>
+                      <span className="text-xs text-gray-500 font-medium">
+                        You rated:
+                      </span>
                       <div className="flex gap-0.5">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-3.5 h-3.5 ${i < ride.rating! ? "fill-gray-900 text-gray-900" : "text-gray-300"
-                              }`}
+                            className={`w-3.5 h-3.5 ${
+                              i < ride.rating!
+                                ? "fill-gray-900 text-gray-900"
+                                : "text-gray-300"
+                            }`}
                           />
                         ))}
                       </div>
@@ -338,7 +397,9 @@ export default function RidesPage() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
                 <Calendar className="w-8 h-8 text-gray-400" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">No rides found</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                No rides found
+              </h3>
               <p className="text-gray-600 mb-6">
                 {searchQuery
                   ? "Try adjusting your search or filters"

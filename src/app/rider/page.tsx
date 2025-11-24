@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Map from "@/components/Map";
 import Modal from "@/components/Modal";
 import Input from "@/components/Input";
@@ -10,7 +10,18 @@ import PriceEstimate from "@/ui/PriceEstimate";
 import PromoBanner from "@/ui/PromoBanner";
 import RideStats from "@/ui/RideStats";
 import SavedPlaces from "@/ui/SavedPlaces";
-import { MapPin, Home, Briefcase, ArrowRight, Clock, Package, Sparkles, Navigation, Zap } from "lucide-react";
+import {
+  MapPin,
+  Home,
+  Briefcase,
+  ArrowRight,
+  Clock,
+  Package,
+  Sparkles,
+  Navigation,
+  Zap
+} from "lucide-react";
+import { useCurrentLocation } from "@/hooks/utils";
 
 const rideOptions = [
   {
@@ -20,7 +31,7 @@ const rideOptions = [
     capacity: 4,
     estimatedTime: "3 min",
     priceEstimate: "$12.50",
-    badge: undefined,
+    badge: undefined
   },
   {
     id: "comfort",
@@ -29,7 +40,7 @@ const rideOptions = [
     capacity: 4,
     estimatedTime: "5 min",
     priceEstimate: "$18.00",
-    badge: "Popular",
+    badge: "Popular"
   },
   {
     id: "premium",
@@ -38,7 +49,7 @@ const rideOptions = [
     capacity: 4,
     estimatedTime: "7 min",
     priceEstimate: "$28.00",
-    badge: undefined,
+    badge: undefined
   },
   {
     id: "xl",
@@ -47,8 +58,8 @@ const rideOptions = [
     capacity: 6,
     estimatedTime: "6 min",
     priceEstimate: "$22.00",
-    badge: undefined,
-  },
+    badge: undefined
+  }
 ];
 
 export default function RiderHome() {
@@ -59,6 +70,15 @@ export default function RiderHome() {
   const [scheduledDate, setScheduledDate] = useState("");
   const [selectedRide, setSelectedRide] = useState<string | null>(null);
 
+  // Get current location
+  const location = useCurrentLocation();
+  const currentLocationMarker = useMemo(
+    () => ({
+      position: [location.latitude, location.longitude] as [number, number]
+    }),
+    [location]
+  );
+
   const handleContinue = () => {
     if (pickup && destination) {
       setShowRides(true);
@@ -67,7 +87,12 @@ export default function RiderHome() {
 
   const handleBookRide = () => {
     if (selectedRide) {
-      console.log("Booking ride:", { pickup, destination, scheduledDate, rideType: selectedRide });
+      console.log("Booking ride:", {
+        pickup,
+        destination,
+        scheduledDate,
+        rideType: selectedRide
+      });
       setIsModalOpen(false);
       setShowRides(false);
       setSelectedRide(null);
@@ -85,9 +110,10 @@ export default function RiderHome() {
       {/* Map Container */}
       <div className="flex-1 relative">
         <Map
-          center={[51.505, -0.09]}
+          center={[location.latitude, location.longitude]}
           zoom={13}
           size="full"
+          markers={[currentLocationMarker]}
         />
 
         {/* Premium floating action buttons */}
@@ -137,34 +163,40 @@ export default function RiderHome() {
           </div>
 
           {/* Promo Banner */}
-          <div className="animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
             <PromoBanner />
           </div>
 
           {/* Ride Stats */}
-          <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
             <RideStats />
           </div>
 
           {/* Saved Places */}
-          <div className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <SavedPlaces onSelectPlace={(place) => {
-              setPickup(place.name);
-              setIsModalOpen(true);
-            }} />
+          <div className="animate-slide-up" style={{ animationDelay: "0.3s" }}>
+            <SavedPlaces
+              onSelectPlace={(place) => {
+                setPickup(place.name);
+                setIsModalOpen(true);
+              }}
+            />
           </div>
 
           {/* Quick Actions */}
-          <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <div className="animate-slide-up" style={{ animationDelay: "0.4s" }}>
             <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 shadow-elevation-1">
-              <h4 className="text-sm font-bold text-gray-900 mb-3">Quick Actions</h4>
+              <h4 className="text-sm font-bold text-gray-900 mb-3">
+                Quick Actions
+              </h4>
               <div className="space-y-2">
                 <button className="w-full p-3 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 text-left transition-all duration-300 group flex items-center gap-3 shadow-sm hover:shadow-md active-scale">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00B388] to-[#00D9A0] flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-bold text-gray-900">Schedule Ride</p>
+                    <p className="text-sm font-bold text-gray-900">
+                      Schedule Ride
+                    </p>
                     <p className="text-xs text-gray-500">Plan ahead</p>
                   </div>
                 </button>
@@ -173,7 +205,9 @@ export default function RiderHome() {
                     <Package className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-bold text-gray-900">Send Package</p>
+                    <p className="text-sm font-bold text-gray-900">
+                      Send Package
+                    </p>
                     <p className="text-xs text-gray-500">Same-day delivery</p>
                   </div>
                 </button>
@@ -195,7 +229,10 @@ export default function RiderHome() {
             {/* Route Selection Section */}
             <div className="space-y-0 glassmorphism-teal p-5 rounded-2xl border border-[#00B388]/20">
               {/* Pickup Input */}
-              <div className="flex items-start gap-3 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              <div
+                className="flex items-start gap-3 animate-slide-up"
+                style={{ animationDelay: "0.1s" }}
+              >
                 <div className="mt-3">
                   <div className="w-3 h-3 rounded-full bg-gradient-to-br from-[#0f172a] to-gray-600 border-2 border-white shadow-elevation-2 animate-pulse-ring" />
                 </div>
@@ -214,7 +251,10 @@ export default function RiderHome() {
               <div className="ml-1.5 h-6 border-l-2 border-dashed border-[#00B388]/30" />
 
               {/* Destination Input */}
-              <div className="flex items-start gap-3 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div
+                className="flex items-start gap-3 animate-slide-up"
+                style={{ animationDelay: "0.2s" }}
+              >
                 <div className="mt-3">
                   <Navigation className="w-4 h-4 text-[#00B388] fill-[#00B388] animate-bounce-subtle" />
                 </div>
@@ -233,7 +273,10 @@ export default function RiderHome() {
               <div className="ml-1.5 h-6 border-l-2 border-dashed border-[#00B388]/30" />
 
               {/* Schedule Date Input */}
-              <div className="flex items-start gap-3 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              <div
+                className="flex items-start gap-3 animate-slide-up"
+                style={{ animationDelay: "0.3s" }}
+              >
                 <div className="mt-3">
                   <Clock className="w-4 h-4 text-[#00B388]" />
                 </div>
@@ -251,7 +294,10 @@ export default function RiderHome() {
             </div>
 
             {/* Quick Actions */}
-            <div className="flex gap-3 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+            <div
+              className="flex gap-3 animate-slide-up"
+              style={{ animationDelay: "0.4s" }}
+            >
               <button
                 onClick={() => {
                   setPickup("Home");
@@ -275,8 +321,13 @@ export default function RiderHome() {
             </div>
 
             {/* Recent Destinations */}
-            <div className="pt-2 border-t border-gray-100 animate-slide-up" style={{ animationDelay: '0.5s' }}>
-              <h3 className="text-sm font-bold text-gray-500 mb-3 px-1">Recent</h3>
+            <div
+              className="pt-2 border-t border-gray-100 animate-slide-up"
+              style={{ animationDelay: "0.5s" }}
+            >
+              <h3 className="text-sm font-bold text-gray-500 mb-3 px-1">
+                Recent
+              </h3>
               <div className="flex items-start gap-3 p-4 rounded-xl hover:bg-gray-50 cursor-pointer transition-all duration-300 group border border-transparent hover:border-[#00B388]/20 hover:shadow-elevation-2 active-scale">
                 <div className="mt-1">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00B388]/10 to-[#00B388]/5 flex items-center justify-center group-hover:from-[#00B388]/20 group-hover:to-[#00B388]/10 transition-all duration-300">
@@ -285,14 +336,19 @@ export default function RiderHome() {
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-gray-900">Steak Restaurant</p>
-                  <p className="text-sm text-gray-500">8 Norman St, East Sydney, NSW 2010</p>
+                  <p className="text-sm text-gray-500">
+                    8 Norman St, East Sydney, NSW 2010
+                  </p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0" />
               </div>
             </div>
 
             {/* Continue Button */}
-            <div className="animate-slide-up pt-2" style={{ animationDelay: '0.6s' }}>
+            <div
+              className="animate-slide-up pt-2"
+              style={{ animationDelay: "0.6s" }}
+            >
               <Button
                 onClick={handleContinue}
                 variant="primary"

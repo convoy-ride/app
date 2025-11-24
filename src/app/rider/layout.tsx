@@ -1,7 +1,7 @@
 import RiderNavigation from "@/ui/navigation/RiderNavigation";
 
 export default function RiderLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -11,9 +11,7 @@ export default function RiderLayout({
       <RiderNavigation />
 
       {/* Main content area with proper padding */}
-      <main className="pb-20 md:pb-0 md:pl-20">
-        {children}
-      </main>
+      <main className="pb-20 md:pb-0 md:pl-20">{children}</main>
     </div>
   );
 }

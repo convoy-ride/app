@@ -11,7 +11,7 @@ export default function Home() {
       href: "/rider",
       icon: <Users className="w-8 h-8" />,
       color: "#00B388",
-      gradient: "from-[#00D9A0] to-[#00B388]",
+      gradient: "from-[#00D9A0] to-[#00B388]"
     },
     {
       title: "Driver",
@@ -19,7 +19,7 @@ export default function Home() {
       href: "/driver",
       icon: <Car className="w-8 h-8" />,
       color: "#008E9C",
-      gradient: "from-[#00C9D4] to-[#008E9C]",
+      gradient: "from-[#00C9D4] to-[#008E9C]"
     },
     {
       title: "DAO",
@@ -27,7 +27,7 @@ export default function Home() {
       href: "/dao",
       icon: <HiUserGroup className="w-8 h-8" />,
       color: "#00A68A",
-      gradient: "from-[#00B388] to-[#00A68A]",
+      gradient: "from-[#00B388] to-[#00A68A]"
     },
     {
       title: "Performance Visualizer",
@@ -35,8 +35,8 @@ export default function Home() {
       href: "/visualizer",
       icon: <BarChart3 className="w-8 h-8" />,
       color: "#007A6E",
-      gradient: "from-[#00A68A] to-[#007A6E]",
-    },
+      gradient: "from-[#00A68A] to-[#007A6E]"
+    }
   ];
 
   return (
@@ -67,7 +67,9 @@ export default function Home() {
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             {/* Premium gradient overlay on hover */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+            />
 
             {/* Icon Container with 3D effect */}
             <div
@@ -88,13 +90,25 @@ export default function Home() {
 
             {/* Arrow indicator with animation */}
             <div className="absolute top-8 right-8 text-gray-400 group-hover:text-[#00B388] transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </div>
 
             {/* Premium corner accent */}
-            <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-tl-full blur-2xl`} />
+            <div
+              className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-tl-full blur-2xl`}
+            />
           </Link>
         ))}
       </div>

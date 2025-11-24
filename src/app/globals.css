@@ -5,14 +5,14 @@
   --foreground: #0f172a;
 
   /* Convoy Premium Brand Colors */
-  --convoy-primary: #00D9A0;
-  --convoy-primary-dark: #00B388;
+  --convoy-primary: #00d9a0;
+  --convoy-primary-dark: #00b388;
   --convoy-primary-darker: #009475;
-  --convoy-primary-light: #00F5B8;
-  --convoy-primary-lighter: #B3F5E3;
-  --convoy-secondary: #00C9D4;
-  --convoy-secondary-dark: #00A8C4;
-  --convoy-accent: #0DE5A0;
+  --convoy-primary-light: #00f5b8;
+  --convoy-primary-lighter: #b3f5e3;
+  --convoy-secondary: #00c9d4;
+  --convoy-secondary-dark: #00a8c4;
+  --convoy-accent: #0de5a0;
 
   /* Sophisticated Neutrals */
   --convoy-text-primary: #0f172a;
@@ -26,16 +26,21 @@
 
   /* Elevation Shadows */
   --shadow-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-elevation-3: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-elevation-4: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-elevation-5: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-elevation-3: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-elevation-4: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-elevation-5: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
   --font-mono: var(--font-geist-mono);
 
   /* Convoy Custom Colors */
@@ -62,7 +67,16 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -151,14 +165,17 @@ body {
 }
 
 @keyframes pulse-glow {
-
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(0, 217, 160, 0.3), 0 0 40px rgba(0, 217, 160, 0.1);
+    box-shadow:
+      0 0 20px rgba(0, 217, 160, 0.3),
+      0 0 40px rgba(0, 217, 160, 0.1);
   }
 
   50% {
-    box-shadow: 0 0 30px rgba(0, 217, 160, 0.5), 0 0 60px rgba(0, 217, 160, 0.2);
+    box-shadow:
+      0 0 30px rgba(0, 217, 160, 0.5),
+      0 0 60px rgba(0, 217, 160, 0.2);
   }
 }
 
@@ -192,7 +209,6 @@ body {
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -204,7 +220,6 @@ body {
 }
 
 @keyframes bounce-subtle {
-
   0%,
   100% {
     transform: translateY(0);
@@ -272,12 +287,12 @@ body {
 
 /* Premium Gradients */
 .gradient-primary {
-  background: linear-gradient(135deg, #00D9A0 0%, #00B388 50%, #009475 100%);
+  background: linear-gradient(135deg, #00d9a0 0%, #00b388 50%, #009475 100%);
   background-size: 200% 200%;
 }
 
 .gradient-secondary {
-  background: linear-gradient(135deg, #00E5D4 0%, #00C9D4 50%, #00A8C4 100%);
+  background: linear-gradient(135deg, #00e5d4 0%, #00c9d4 50%, #00a8c4 100%);
   background-size: 200% 200%;
 }
 
@@ -287,19 +302,19 @@ body {
 }
 
 .gradient-ocean {
-  background: linear-gradient(135deg, #00C9D4 0%, #0099ff 50%, #0066cc 100%);
+  background: linear-gradient(135deg, #00c9d4 0%, #0099ff 50%, #0066cc 100%);
   background-size: 200% 200%;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #00F5B8 0%, #00B388 100%);
+  background: linear-gradient(135deg, #00f5b8 0%, #00b388 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-vibrant {
-  background: linear-gradient(135deg, #00D9A0 0%, #00E5D4 50%, #00F5B8 100%);
+  background: linear-gradient(135deg, #00d9a0 0%, #00e5d4 50%, #00f5b8 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -311,7 +326,7 @@ body {
 }
 
 .gradient-overlay::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
@@ -389,10 +404,12 @@ body {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -440,7 +457,9 @@ body {
 
 /* Hover Effects */
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
@@ -465,10 +484,7 @@ body {
 
 /* Loading States */
 .skeleton {
-  background: linear-gradient(90deg,
-      #f1f5f9 0%,
-      #e2e8f0 50%,
-      #f1f5f9 100%);
+  background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 0.5rem;

@@ -17,9 +17,9 @@ export default function PriceEstimate({
   duration,
   surge = 0,
   discount = 0,
-  currency = "$",
+  currency = "$"
 }: PriceEstimateProps) {
-  const subtotal = baseFare + (distance * 0.5) + (duration * 0.2);
+  const subtotal = baseFare + distance * 0.5 + duration * 0.2;
   const surgeAmount = subtotal * (surge / 100);
   const total = subtotal + surgeAmount - discount;
 
@@ -46,7 +46,10 @@ export default function PriceEstimate({
             <div className="w-1.5 h-1.5 rounded-full bg-[#00B388]" />
             Base Fare
           </span>
-          <span className="font-semibold text-gray-900">{currency}{baseFare.toFixed(2)}</span>
+          <span className="font-semibold text-gray-900">
+            {currency}
+            {baseFare.toFixed(2)}
+          </span>
         </div>
 
         <div className="flex items-center justify-between text-sm">
@@ -54,7 +57,10 @@ export default function PriceEstimate({
             <MapPin className="w-3.5 h-3.5" />
             Distance ({distance.toFixed(1)} km)
           </span>
-          <span className="font-semibold text-gray-900">{currency}{(distance * 0.5).toFixed(2)}</span>
+          <span className="font-semibold text-gray-900">
+            {currency}
+            {(distance * 0.5).toFixed(2)}
+          </span>
         </div>
 
         <div className="flex items-center justify-between text-sm">
@@ -62,7 +68,10 @@ export default function PriceEstimate({
             <Clock className="w-3.5 h-3.5" />
             Time ({duration} min)
           </span>
-          <span className="font-semibold text-gray-900">{currency}{(duration * 0.2).toFixed(2)}</span>
+          <span className="font-semibold text-gray-900">
+            {currency}
+            {(duration * 0.2).toFixed(2)}
+          </span>
         </div>
 
         {surge > 0 && (
@@ -71,17 +80,25 @@ export default function PriceEstimate({
               <TrendingUp className="w-3.5 h-3.5" />
               Surge Pricing
             </span>
-            <span className="font-semibold text-orange-600">+{currency}{surgeAmount.toFixed(2)}</span>
+            <span className="font-semibold text-orange-600">
+              +{currency}
+              {surgeAmount.toFixed(2)}
+            </span>
           </div>
         )}
 
         {discount > 0 && (
           <div className="flex items-center justify-between text-sm">
             <span className="text-green-600 flex items-center gap-2">
-              <div className="w-3.5 h-3.5 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold">%</div>
+              <div className="w-3.5 h-3.5 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold">
+                %
+              </div>
               Discount
             </span>
-            <span className="font-semibold text-green-600">-{currency}{discount.toFixed(2)}</span>
+            <span className="font-semibold text-green-600">
+              -{currency}
+              {discount.toFixed(2)}
+            </span>
           </div>
         )}
       </div>
@@ -89,12 +106,17 @@ export default function PriceEstimate({
       {/* Total */}
       <div className="pt-3 border-t border-[#00B388]/20">
         <div className="flex items-center justify-between">
-          <span className="text-base font-bold text-gray-900">Total Estimate</span>
+          <span className="text-base font-bold text-gray-900">
+            Total Estimate
+          </span>
           <span className="text-2xl font-bold gradient-text-vibrant animate-gradient">
-            {currency}{total.toFixed(2)}
+            {currency}
+            {total.toFixed(2)}
           </span>
         </div>
-        <p className="text-xs text-gray-500 mt-1 text-right">Final price may vary</p>
+        <p className="text-xs text-gray-500 mt-1 text-right">
+          Final price may vary
+        </p>
       </div>
     </div>
   );
