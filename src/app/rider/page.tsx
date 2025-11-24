@@ -1,7 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Map from "@/components/Map";
+import dynamic from "next/dynamic";
+
+const Map = dynamic(() => import("@/components/Map"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full w-full bg-gray-100 animate-pulse rounded-2xl flex items-center justify-center">
+      <span className="text-gray-400 font-medium">Loading Map...</span>
+    </div>
+  )
+});
 import Modal from "@/components/Modal";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
