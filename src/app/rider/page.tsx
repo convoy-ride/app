@@ -182,7 +182,7 @@ export default function RiderHome() {
           isSidebarOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <div className="p-6 space-y-6">
+        <div className="p-6 pb-24 space-y-6">
           {/* Promo Banner */}
           <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
             <PromoBanner />
