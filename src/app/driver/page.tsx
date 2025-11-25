@@ -93,7 +93,7 @@ export default function DriverHome() {
   };
 
   return (
-    <div className="h-screen relative bg-gray-50 flex">
+    <div className="h-screen relative bg-white flex">
       {/* Map Container */}
       <div className="flex-1 relative">
         <Map
@@ -163,7 +163,7 @@ export default function DriverHome() {
       </div>
 
       {/* Info Sidebar (Desktop only) */}
-      <div className="hidden md:flex flex-col w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar shadow-elevation-4 pt-20">
+      <div className="hidden md:flex flex-col w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar shadow-elevation-4">
         <div className="p-6 space-y-6">
           {/* Header */}
           <div className="animate-slide-up">

@@ -121,6 +121,7 @@ a,
 
 /* ==================== Custom Animations ==================== */
 
+/* Fade In */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -130,9 +131,10 @@ a,
   }
 }
 
+/* Slide Up - Enhanced with bounce */
 @keyframes slideUp {
   from {
-    transform: translateY(10px);
+    transform: translateY(20px);
     opacity: 0;
   }
   to {
@@ -141,14 +143,140 @@ a,
   }
 }
 
+/* Slide Down */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide In from Right */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide In from Left */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Scale In - Spring effect */
 @keyframes scaleIn {
   from {
-    transform: scale(0.98);
+    transform: scale(0.9);
     opacity: 0;
   }
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* Bounce Subtle */
+@keyframes bounceSubtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Pulse Ring - For location markers */
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(5, 150, 105, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0);
+  }
+}
+
+/* Shimmer - Loading skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Spin */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade Scale - Combined */
+@keyframes fadeScale {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal Backdrop */
+@keyframes backdropFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Bottom Sheet Slide */
+@keyframes bottomSheetSlide {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -176,6 +304,13 @@ a,
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.glassmorphism-teal {
+  background: rgba(5, 150, 105, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(5, 150, 105, 0.1);
+}
+
 /* Professional Gradients */
 .gradient-primary {
   background: linear-gradient(135deg, #059669 0%, #047857 100%);
@@ -190,6 +325,11 @@ a,
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
 }
 
 /* Refined Shadows */
@@ -217,21 +357,77 @@ a,
 .shadow-elevation-4 {
   box-shadow: var(--shadow-elevation-4);
 }
+.shadow-elevation-5 {
+  box-shadow: var(--shadow-elevation-5);
+}
+
+/* Glow Effect */
+.shadow-glow {
+  box-shadow:
+    0 0 20px rgba(5, 150, 105, 0.3),
+    0 0 40px rgba(5, 150, 105, 0.2),
+    var(--shadow-elevation-3);
+}
 
 /* Animation Classes */
 .animate-fade-in {
-  animation: fadeIn 0.4s ease-out;
+  animation: fadeIn 0.4s ease-out forwards;
 }
+
 .animate-slide-up {
-  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+.animate-slide-down {
+  animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .animate-scale-in {
-  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-scale {
+  animation: fadeScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-bounce-subtle {
+  animation: bounceSubtle 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Loading Shimmer */
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
 }
 
 /* Transition Classes */
 .transition-smooth {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transition-spring {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.transition-fast {
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Hover Effects */
@@ -246,10 +442,49 @@ a,
   box-shadow: var(--shadow-elevation-3);
 }
 
-/* Active Press Effect */
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Active Press Effect - Native Feel */
 .active-press:active {
   transform: scale(0.96);
   transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.active-scale:active {
+  transform: scale(0.98);
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Touch Feedback - Ripple effect (CSS only) */
+.touch-feedback {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-feedback::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+.touch-feedback:active::after {
+  width: 300px;
+  height: 300px;
 }
 
 /* Custom Scrollbar */
@@ -271,6 +506,12 @@ a,
   background: var(--convoy-text-tertiary);
 }
 
+/* Smooth Scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* No Scrollbar Utility */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -280,14 +521,35 @@ a,
   scrollbar-width: none;
 }
 
-/* Focus Visible */
+/* Focus Visible - Enhanced */
 .focus-ring:focus-visible {
   outline: 2px solid var(--convoy-primary);
   outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
 }
 
 /* Text Selection */
 ::selection {
   background-color: rgba(5, 150, 105, 0.15);
   color: var(--convoy-primary-dark);
+}
+
+/* Disabled State */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Native Momentum Scrolling */
+* {
+  -webkit-overflow-scrolling: touch;
 }

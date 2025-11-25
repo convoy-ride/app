@@ -141,7 +141,7 @@ export default function DAOPage() {
     formData.deadline;
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-8 px-4 md:px-8">
+    <div className="min-h-screen bg-gray-50 pt-24 pb-8 px-4 md:px-8">
       <div className="max-w-[1400px] mx-auto space-y-8">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 animate-slide-up">

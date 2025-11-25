@@ -50,6 +50,33 @@ const CustomTooltip = ({
   return null;
 };
 
+const CustomLegend = ({
+  payload
+}: {
+  payload?: { value: string; color: string }[];
+}) => {
+  if (!payload || payload.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 px-2 mt-4">
+      {payload.map((entry, index) => (
+        <div
+          key={`legend-${index}`}
+          className="flex items-center gap-1.5 min-w-0"
+        >
+          <div
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+            style={{ backgroundColor: entry.color }}
+          />
+          <span className="text-xs md:text-sm text-gray-700 truncate">
+            {entry.value}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const renderCustomLabel = ({
   cx,
   cy,
@@ -128,12 +155,8 @@ export default function PieChart({
         {showTooltip && <Tooltip content={<CustomTooltip />} />}
         {showLegend && (
           <Legend
-            verticalAlign="bottom"
-            height={36}
-            iconType="circle"
-            formatter={(value) => (
-              <span className="text-sm text-gray-700">{value}</span>
-            )}
+            content={<CustomLegend />}
+            wrapperStyle={{ paddingTop: "10px" }}
           />
         )}
       </RechartsPieChart>

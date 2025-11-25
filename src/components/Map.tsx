@@ -18,22 +18,19 @@ const icon = L.icon({
   shadowSize: [41, 41]
 });
 
-const mapVariants = cva(
-  "rounded-2xl overflow-hidden border border-gray-200 relative z-10 shadow-elevation-3",
-  {
-    variants: {
-      size: {
-        sm: "h-64",
-        md: "h-96",
-        lg: "h-[32rem]",
-        full: "h-screen"
-      }
-    },
-    defaultVariants: {
-      size: "md"
+const mapVariants = cva("relative z-10", {
+  variants: {
+    size: {
+      sm: "h-64 rounded-2xl overflow-hidden border border-gray-200 shadow-elevation-3",
+      md: "h-96 rounded-2xl overflow-hidden border border-gray-200 shadow-elevation-3",
+      lg: "h-[32rem] rounded-2xl overflow-hidden border border-gray-200 shadow-elevation-3",
+      full: "h-screen w-full"
     }
+  },
+  defaultVariants: {
+    size: "md"
   }
-);
+});
 
 export interface MapProps extends VariantProps<typeof mapVariants> {
   center?: [number, number];
