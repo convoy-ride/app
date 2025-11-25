@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -111,7 +112,7 @@ export default function DriverAccountPage() {
                 Phone Number
               </label>
               <div className="flex">
-                <div className="flex items-center px-3 border border-r-0 border-gray-200 rounded-l-xl bg-gray-50 text-gray-600 font-medium min-w-[80px]">
+                <div className="flex items-center px-3 border border-r-0 border-gray-200 rounded-l-xl bg-gray-50 text-gray-600 font-medium min-w-20">
                   <span className="mr-1">🇺🇸</span>
                   <span>+1</span>
                   <ChevronDown className="w-3 h-3 ml-1 text-gray-400" />
@@ -196,7 +197,7 @@ export default function DriverAccountPage() {
           </div>
 
           <div className="flex flex-col items-center mb-8">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#00B388]/10 to-[#00B388]/5 flex items-center justify-center border-2 border-[#00B388]/20">
+            <div className="w-24 h-24 rounded-full bg-linear-to-br from-[#00B388]/10 to-[#00B388]/5 flex items-center justify-center border-2 border-[#00B388]/20">
               <Car className="w-12 h-12 text-[#00B388]" />
             </div>
           </div>
@@ -348,7 +349,7 @@ export default function DriverAccountPage() {
           style={{ animationDelay: "0.2s" }}
         >
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00B388]/10 to-[#00B388]/5 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-linear-to-br from-[#00B388]/10 to-[#00B388]/5 flex items-center justify-center">
               <Car className="w-6 h-6 text-[#00B388]" />
             </div>
             <div className="flex-1">

@@ -8,10 +8,7 @@ import {
   TrendingUp,
   Navigation2,
   MapPin,
-  User,
   Star,
-  Phone,
-  MessageSquare,
   CheckCircle,
   XCircle,
   Activity,
@@ -152,7 +149,7 @@ export default function DriverHome() {
         {/* Mobile Trip Requests Button - Always visible for testing */}
         <button
           onClick={() => setShowMobileRequests(true)}
-          className="md:hidden fixed bottom-[200px] right-4 z-[100] w-16 h-16 bg-gradient-to-br from-[#00B388] to-[#00D9A0] text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center font-bold"
+          className="md:hidden fixed bottom-[200px] right-4 z-100 w-16 h-16 bg-linear-to-br from-[#00B388] to-[#00D9A0] text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center font-bold"
           aria-label="View trip requests"
         >
           <Navigation2 className="w-7 h-7" />
@@ -185,7 +182,7 @@ export default function DriverHome() {
             className="grid grid-cols-2 gap-3 animate-slide-up"
             style={{ animationDelay: "0.1s" }}
           >
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-[#00B388]/10 to-[#00B388]/5 border border-[#00B388]/20">
+            <div className="p-4 rounded-2xl bg-linear-to-br from-[#00B388]/10 to-[#00B388]/5 border border-[#00B388]/20">
               <div className="flex items-center gap-2 mb-2">
                 <Navigation2 className="w-4 h-4 text-[#00B388]" />
                 <span className="text-xs font-bold text-gray-600 uppercase">
@@ -196,7 +193,7 @@ export default function DriverHome() {
                 {todayStats.trips}
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100">
+            <div className="p-4 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="w-4 h-4 text-gray-600" />
                 <span className="text-xs font-bold text-gray-600 uppercase">
@@ -207,7 +204,7 @@ export default function DriverHome() {
                 {todayStats.hours}h
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100">
+            <div className="p-4 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100">
               <div className="flex items-center gap-2 mb-2">
                 <Star className="w-4 h-4 text-gray-900 fill-gray-900" />
                 <span className="text-xs font-bold text-gray-600 uppercase">
@@ -218,7 +215,7 @@ export default function DriverHome() {
                 {todayStats.rating}
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-white border border-purple-100">
+            <div className="p-4 rounded-2xl bg-linear-to-br from-purple-50 to-white border border-purple-100">
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp className="w-4 h-4 text-purple-600" />
                 <span className="text-xs font-bold text-gray-600 uppercase">
@@ -233,7 +230,7 @@ export default function DriverHome() {
 
           {/* Availability Toggle */}
           <div
-            className="p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 animate-slide-up"
+            className="p-4 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100 animate-slide-up"
             style={{ animationDelay: "0.2s" }}
           >
             <div className="flex items-center justify-between">
@@ -374,14 +371,14 @@ export default function DriverHome() {
           {/* Offline Message */}
           {!isOnline && (
             <div
-              className="p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 text-center animate-slide-up"
+              className="p-6 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-200 text-center animate-slide-up"
               style={{ animationDelay: "0.3s" }}
             >
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
                 <ZapOff className="w-8 h-8 text-gray-400" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">
-                You're Offline
+                You&apos;re Offline
               </h3>
               <p className="text-sm text-gray-600 mb-4">
                 Go online to start receiving trip requests and earning money
@@ -434,7 +431,7 @@ export default function DriverHome() {
         size="md"
       >
         <div className="space-y-3">
-          {mockTripRequests.map((trip, index) => (
+          {mockTripRequests.map((trip) => (
             <div
               key={trip.id}
               className="p-4 rounded-2xl border border-gray-200 bg-white shadow-sm"
