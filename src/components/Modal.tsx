@@ -2,7 +2,8 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 
 const overlayVariants = cva(
   "fixed inset-0 backdrop-blur-md transition-all duration-300 z-50",
@@ -55,40 +56,37 @@ export default function Modal({
   size,
   showCloseButton = true
 }: ModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [shouldRender, setShouldRender] = useState(isOpen);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle render state for animations
   useEffect(() => {
     if (isOpen) {
       setShouldRender(true);
-      // Prevent body scroll when modal is open
-      document.body.style.overflow = "hidden";
+      // Focus the modal when it opens
+      setTimeout(() => modalRef.current?.focus(), 50);
     } else {
       const timer = setTimeout(() => setShouldRender(false), 300);
-      document.body.style.overflow = "";
-      return () => {
-        clearTimeout(timer);
-        document.body.style.overflow = "";
-      };
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
-  // Close on Escape key
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [isOpen, onClose]);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      onClose();
+    }
+  };
 
-  if (!shouldRender) {
+  if (!mounted || !shouldRender) {
     return null;
   }
 
-  return (
+  return createPortal(
     <>
       {/* Backdrop */}
       <div
@@ -99,10 +97,13 @@ export default function Modal({
 
       {/* Modal/Bottom Sheet */}
       <div
+        ref={modalRef}
+        tabIndex={-1}
+        onKeyDown={handleKeyDown}
         className={`${modalVariants({ show: isOpen, size })} 
-          bottom-0 left-0 right-0 rounded-t-[2rem] border-t border-gray-100
+          bottom-0 left-0 right-0 rounded-t-4xl border-t border-gray-100
           md:bottom-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-2xl md:border
-          max-h-[92vh] md:max-h-[85vh] overflow-hidden
+          max-h-[92vh] md:max-h-[85vh] overflow-hidden outline-none
           w-full pb-safe transition-transform duration-300 cubic-bezier(0.32, 0.72, 0, 1)`}
         role="dialog"
         aria-modal="true"
@@ -137,6 +138,7 @@ export default function Modal({
           {children}
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }

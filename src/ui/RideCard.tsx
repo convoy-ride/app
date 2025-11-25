@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Users, Clock, Star } from "lucide-react";
 
 const rideCardVariants = cva(
-  "relative overflow-hidden rounded-2xl border transition-all duration-300 cursor-pointer group",
+  "relative overflow-hidden rounded-2xl border transition-smooth cursor-pointer group",
   {
     variants: {
       selected: {
         true: "border-[#00B388] bg-[#00B388]/5 shadow-elevation-3 ring-2 ring-[#00B388]/30",
         false:
-          "border-gray-200 bg-white hover:border-[#00B388]/50 hover:shadow-elevation-2 active-scale"
+          "border-gray-200 bg-white hover:border-[#00B388]/50 hover:shadow-elevation-2 active-press"
       }
     },
     defaultVariants: {

@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { PT_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/ui/Header";
 
-const sans = PT_Sans({
+const sans = Inter({
   subsets: ["latin"],
-  weight: ["400", "700"]
+  variable: "--font-sans"
 });
 
 const APP_TITLE = "Convoy | Decentralized ride-hailing marketplace";
@@ -36,7 +36,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#38cdff"
+  themeColor: "#059669",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover"
 };
 
 export default function RootLayout({

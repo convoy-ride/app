@@ -85,6 +85,23 @@ body {
   text-rendering: optimizeLegibility;
   overscroll-behavior-y: none; /* Prevent pull-to-refresh on mobile web */
   -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Allow selection in inputs */
+input,
+textarea,
+[contenteditable] {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Improve touch response */
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
 }
 
 /* Safe Area Utilities */
@@ -229,6 +246,12 @@ body {
   box-shadow: var(--shadow-elevation-3);
 }
 
+/* Active Press Effect */
+.active-press:active {
+  transform: scale(0.96);
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
@@ -246,6 +269,15 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: var(--convoy-text-tertiary);
+}
+
+/* No Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Focus Visible */
