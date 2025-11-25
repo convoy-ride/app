@@ -118,7 +118,7 @@ export default function RiderHome() {
   };
 
   return (
-    <div className="h-screen relative bg-gray-50 flex animate-fade-in">
+    <div className="h-screen relative bg-white flex animate-fade-in">
       {/* Map Container */}
       <div className="flex-1 relative">
         <Map
@@ -240,7 +240,7 @@ export default function RiderHome() {
       </div>
 
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex flex-col w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar shadow-elevation-4 pt-20">
+      <div className="hidden md:flex flex-col w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar shadow-elevation-4">
         <div className="p-6 space-y-6">
           {/* Header */}
           {/* <div className="animate-slide-up">
@@ -370,7 +370,7 @@ export default function RiderHome() {
                 <div className="mt-3">
                   <Clock className="w-4 h-4 text-[#00B388]" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <Input
                     type="datetime-local"
                     placeholder="Schedule for later (optional)"

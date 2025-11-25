@@ -51,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sans.className} antialiased pt-20`}>
+      <body className={`${sans.className} antialiased`}>
         <Header />
         {children}
       </body>

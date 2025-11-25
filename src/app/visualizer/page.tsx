@@ -72,7 +72,7 @@ export default function AnalyticsPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-8 px-4 md:px-8">
+    <div className="min-h-screen bg-gray-50 pt-24 pb-8 px-4 md:px-8">
       <div className="max-w-[1600px] mx-auto space-y-8">
         {/* Header */}
         <div className="animate-slide-up">
@@ -144,7 +144,7 @@ export default function AnalyticsPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Response Time by Service */}
-            <div>
+            <div className="min-w-0">
               <h3 className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">
                 Response Time by Service (ms)
               </h3>
@@ -157,7 +157,7 @@ export default function AnalyticsPage() {
               />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h3 className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">
                 API Call Volume
               </h3>
@@ -171,7 +171,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Success/Error Rates */}
-            <div>
+            <div className="min-w-0">
               <h3 className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">
                 Success vs Error Rate (%)
               </h3>
@@ -186,7 +186,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Endpoint Distribution */}
-            <div>
+            <div className="min-w-0">
               <h3 className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">
                 Requests by Service
               </h3>
@@ -235,9 +235,9 @@ export default function AnalyticsPage() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-slide-up"
           style={{ animationDelay: "0.4s" }}
         >
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-900">
+          <div className="min-w-0 overflow-hidden">
+            <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
+              <h2 className="text-lg md:text-xl font-bold text-gray-900 min-w-0">
                 Top Performers
               </h2>
               <PeriodSelector
@@ -264,7 +264,7 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Logs Section */}
-          <div>
+          <div className="min-w-0 overflow-hidden">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold text-gray-900">System Logs</h2>
               <div className="flex gap-2">

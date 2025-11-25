@@ -41,7 +41,7 @@ export default function AccountPage() {
       <div className="min-h-screen bg-white pt-28 pb-24 md:pb-8 px-4 md:px-8">
         <button
           onClick={() => setView("menu")}
-          className="fixed top-28 left-6 md:left-28 z-50 bg-white p-3 rounded-full border border-gray-300 shadow-sm hover:shadow-md hover:border-gray-400 transition-all duration-300 group"
+          className="fixed top-6 left-6 md:left-28 z-50 bg-white p-3 rounded-full border border-gray-300 shadow-sm hover:shadow-md hover:border-gray-400 transition-all duration-300 group"
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
         </button>
@@ -171,7 +171,7 @@ export default function AccountPage() {
     <div className="min-h-screen bg-gray-50 pt-28 pb-24 md:pb-8 px-4 md:px-8">
       <button
         onClick={() => router.back()}
-        className="fixed top-28 left-6 md:left-28 z-50 bg-white p-3 rounded-full border border-gray-300 shadow-sm hover:shadow-md hover:border-gray-400 transition-all duration-300 group"
+        className="fixed top-6 left-6 md:left-28 z-50 bg-white p-3 rounded-full border border-gray-300 shadow-sm hover:shadow-md hover:border-gray-400 transition-all duration-300 group"
       >
         <ArrowLeft className="w-5 h-5 text-gray-700" />
       </button>

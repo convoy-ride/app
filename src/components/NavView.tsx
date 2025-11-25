@@ -18,7 +18,7 @@ export default function NavView({ items }: NavViewProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 pb-safe md:left-0 md:top-20 md:bottom-0 md:w-20 md:border-r md:border-t-0 md:flex md:flex-col md:items-center md:py-6 md:pb-0 shadow-[0_-1px_3px_rgba(0,0,0,0.05)] md:shadow-none">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 pb-safe md:left-0 md:top-0 md:bottom-0 md:w-20 md:border-r md:border-t-0 md:flex md:flex-col md:items-center md:py-6 md:pb-0 shadow-[0_-1px_3px_rgba(0,0,0,0.05)] md:shadow-none">
       <div className="flex justify-around items-center h-16 md:flex-col md:h-auto md:gap-6 md:flex-1 w-full max-w-lg mx-auto md:max-w-none">
         {items.map((item) => {
           const isActive = pathname === item.href;

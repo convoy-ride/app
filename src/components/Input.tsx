@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, forwardRef } from "react";
 
 const inputVariants = cva(
-  "w-full font-medium transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed placeholder:text-gray-400 text-gray-900",
+  "w-full font-medium transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed placeholder:text-gray-400 text-gray-900 overflow-hidden",
   {
     variants: {
       variant: {
@@ -66,7 +66,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const currentState = error ? "error" : success ? "success" : state;
 
     return (
-      <div className="w-full">
+      <div
+        className={`w-full ${props.type === "datetime-local" ? "min-w-0" : ""}`}
+      >
         {label && (
           <label
             htmlFor={inputId}
@@ -84,6 +86,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             state: currentState,
             className
           })}
+          style={{
+            maxWidth: "100%",
+            ...(props.type === "datetime-local" && {
+              minWidth: 0,
+              width: "100%"
+            })
+          }}
           {...props}
         />
         {(error || success || helperText) && (
