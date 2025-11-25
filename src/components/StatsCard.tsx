@@ -1,7 +1,7 @@
 "use client";
 
 import { LucideIcon, TrendingUp, TrendingDown } from "lucide-react";
-import { LineChart, Line, ResponsiveContainer } from "recharts";
+import LineChart from "../components/charts/LineChart";
 
 interface StatsCardProps {
   icon: LucideIcon;
@@ -27,7 +27,7 @@ export default function StatsCard({
     sparklineData?.map((value, index) => ({ value, index })) || [];
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+    <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover-lift animate-scale-in">
       <div className="flex items-start justify-between mb-4">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center"
@@ -62,17 +62,18 @@ export default function StatsCard({
 
       {sparklineData && sparklineData.length > 0 && (
         <div className="h-12 -mb-2">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData}>
-              <Line
-                type="monotone"
-                dataKey="value"
-                stroke={color}
-                strokeWidth={2}
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <LineChart
+            data={chartData}
+            xKey="index"
+            yKey="value"
+            color={color}
+            height={48}
+            showGrid={false}
+            showTooltip={false}
+            showXAxis={false}
+            showYAxis={false}
+            gradient={false}
+          />
         </div>
       )}
     </div>

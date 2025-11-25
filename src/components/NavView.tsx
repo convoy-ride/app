@@ -28,7 +28,7 @@ export default function NavView({ items }: NavViewProps) {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex flex-col items-center justify-center gap-1 w-16 py-1 rounded-xl transition-all duration-200 md:w-full md:py-3 group relative active:scale-95 ${
+              className={`flex flex-col items-center justify-center gap-1 w-16 py-1 rounded-xl transition-smooth md:w-full md:py-3 group relative active-press ${
                 isActive
                   ? "text-[#059669]"
                   : "text-gray-400 hover:text-gray-600"

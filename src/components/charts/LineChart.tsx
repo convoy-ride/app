@@ -18,6 +18,8 @@ interface LineChartProps {
   height?: number;
   showGrid?: boolean;
   showTooltip?: boolean;
+  showXAxis?: boolean;
+  showYAxis?: boolean;
   gradient?: boolean;
 }
 
@@ -49,6 +51,8 @@ export default function LineChart({
   height = 300,
   showGrid = true,
   showTooltip = true,
+  showXAxis = true,
+  showYAxis = true,
   gradient = true
 }: LineChartProps) {
   return (
@@ -72,17 +76,21 @@ export default function LineChart({
           </defs>
         )}
         {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />}
-        <XAxis
-          dataKey={xKey}
-          tick={{ fontSize: 12, fill: "#6B7280" }}
-          tickLine={false}
-          axisLine={{ stroke: "#E5E7EB" }}
-        />
-        <YAxis
-          tick={{ fontSize: 12, fill: "#6B7280" }}
-          tickLine={false}
-          axisLine={{ stroke: "#E5E7EB" }}
-        />
+        {showXAxis && (
+          <XAxis
+            dataKey={xKey}
+            tick={{ fontSize: 12, fill: "#6B7280" }}
+            tickLine={false}
+            axisLine={{ stroke: "#E5E7EB" }}
+          />
+        )}
+        {showYAxis && (
+          <YAxis
+            tick={{ fontSize: 12, fill: "#6B7280" }}
+            tickLine={false}
+            axisLine={{ stroke: "#E5E7EB" }}
+          />
+        )}
         {showTooltip && <Tooltip content={<CustomTooltip />} />}
         <Line
           type="monotone"

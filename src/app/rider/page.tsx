@@ -19,7 +19,9 @@ import {
   Package,
   Sparkles,
   Navigation,
-  Zap
+  Zap,
+  Menu,
+  X
 } from "lucide-react";
 import { useCurrentLocation } from "@/hooks/utils";
 
@@ -78,6 +80,7 @@ export default function RiderHome() {
   const [destination, setDestination] = useState("");
   const [scheduledDate, setScheduledDate] = useState("");
   const [selectedRide, setSelectedRide] = useState<string | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Get current location
   const location = useCurrentLocation();
@@ -115,7 +118,7 @@ export default function RiderHome() {
   };
 
   return (
-    <div className="h-screen relative bg-gray-50 flex">
+    <div className="h-screen relative bg-gray-50 flex animate-fade-in">
       {/* Map Container */}
       <div className="flex-1 relative">
         <Map
@@ -127,16 +130,23 @@ export default function RiderHome() {
 
         {/* Premium floating action buttons */}
         <div className="fixed bottom-24 md:bottom-6 right-6 flex flex-col gap-3 z-30 animate-slide-up">
-          {/* Quick Stats button (mobile only) */}
-          <button className="md:hidden glassmorphism text-gray-700 px-5 py-3 rounded-2xl shadow-elevation-3 hover:shadow-elevation-4 hover:scale-105 transition-all duration-300 flex items-center gap-2 font-semibold border border-gray-200 group active-scale">
-            <Zap className="w-4 h-4 text-[#00B388] group-hover:rotate-12 transition-transform duration-300" />
-            <span className="text-sm">127 rides</span>
+          {/* Info/Menu button (mobile only) */}
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="md:hidden glassmorphism text-gray-700 px-5 py-3 rounded-2xl shadow-elevation-3 hover:shadow-elevation-4 hover:scale-105 transition-all duration-300 flex items-center gap-2 font-semibold border border-gray-200 group active-press"
+          >
+            {isSidebarOpen ? (
+              <X className="w-4 h-4 text-[#00B388] transition-transform duration-300" />
+            ) : (
+              <Menu className="w-4 h-4 text-[#00B388] transition-transform duration-300" />
+            )}
+            <span className="text-sm">Menu</span>
           </button>
 
           {/* Delivery button */}
           <button
             onClick={() => console.log("Delivery clicked")}
-            className="glassmorphism text-[#00B388] px-6 py-3.5 rounded-2xl shadow-elevation-3 hover:shadow-elevation-4 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 font-semibold border border-[#00B388]/20 group active-scale relative"
+            className="glassmorphism text-[#00B388] px-6 py-3.5 rounded-2xl shadow-elevation-3 hover:shadow-elevation-4 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 font-semibold border border-[#00B388]/20 group active-press relative"
           >
             <Package className="w-5 h-5 group-hover:rotate-6 transition-transform duration-300" />
             <span>Delivery</span>
@@ -149,7 +159,7 @@ export default function RiderHome() {
           {/* Ride button */}
           <button
             onClick={() => setIsModalOpen(true)}
-            className="gradient-primary text-white px-6 py-3.5 rounded-2xl shadow-glow hover:shadow-glow hover:scale-110 transition-all duration-300 animate-gradient flex items-center gap-2.5 font-bold group relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 active-scale"
+            className="gradient-primary text-white px-6 py-3.5 rounded-2xl shadow-glow hover:shadow-glow hover:scale-110 transition-all duration-300 animate-gradient flex items-center gap-2.5 font-bold group relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 active-press"
           >
             <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
             <span>Where to?</span>
@@ -158,7 +168,78 @@ export default function RiderHome() {
         </div>
       </div>
 
-      {/* Premium Info Sidebar (Desktop only) */}
+      {/* Backdrop for mobile sidebar */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Mobile Bottom Sheet Sidebar */}
+      <div
+        className={`md:hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-elevation-5 z-50 transition-transform duration-300 overflow-y-auto custom-scrollbar pb-safe max-h-[80vh] ${
+          isSidebarOpen ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
+        <div className="p-6 space-y-6">
+          {/* Promo Banner */}
+          <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
+            <PromoBanner />
+          </div>
+
+          {/* Ride Stats */}
+          <div className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
+            <RideStats />
+          </div>
+
+          {/* Saved Places */}
+          <div className="animate-slide-up" style={{ animationDelay: "0.3s" }}>
+            <SavedPlaces
+              onSelectPlace={(place) => {
+                setPickup(place.name);
+                setIsModalOpen(true);
+                setIsSidebarOpen(false);
+              }}
+            />
+          </div>
+
+          {/* Quick Actions */}
+          <div className="animate-slide-up" style={{ animationDelay: "0.4s" }}>
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 shadow-elevation-1">
+              <h4 className="text-sm font-bold text-gray-900 mb-3">
+                Quick Actions
+              </h4>
+              <div className="space-y-2">
+                <button className="w-full p-3 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 text-left transition-all duration-300 group flex items-center gap-3 shadow-sm hover:shadow-md active-press">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00B388] to-[#00D9A0] flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-gray-900">
+                      Schedule Ride
+                    </p>
+                    <p className="text-xs text-gray-500">Plan ahead</p>
+                  </div>
+                </button>
+                <button className="w-full p-3 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 text-left transition-all duration-300 group flex items-center gap-3 shadow-sm hover:shadow-md active-press">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <Package className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-gray-900">
+                      Send Package
+                    </p>
+                    <p className="text-xs text-gray-500">Same-day delivery</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Sidebar */}
       <div className="hidden md:flex flex-col w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar shadow-elevation-4 pt-20">
         <div className="p-6 space-y-6">
           {/* Header */}
