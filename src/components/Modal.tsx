@@ -61,9 +61,15 @@ export default function Modal({
   useEffect(() => {
     if (isOpen) {
       setShouldRender(true);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden";
     } else {
-      const timer = setTimeout(() => setShouldRender(false), 500);
-      return () => clearTimeout(timer);
+      const timer = setTimeout(() => setShouldRender(false), 300);
+      document.body.style.overflow = "";
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = "";
+      };
     }
   }, [isOpen]);
 
@@ -84,7 +90,7 @@ export default function Modal({
 
   return (
     <>
-      {/* Glassmorphism Overlay */}
+      {/* Backdrop */}
       <div
         className={overlayVariants({ show: isOpen })}
         onClick={onClose}
@@ -94,27 +100,30 @@ export default function Modal({
       {/* Modal/Bottom Sheet */}
       <div
         className={`${modalVariants({ show: isOpen, size })} 
-          bottom-0 left-0 right-0 rounded-t-3xl border-t border-gray-100
-          md:bottom-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-3xl md:border
-          max-h-[90vh] md:max-h-[85vh] overflow-hidden
-          w-full`}
+          bottom-0 left-0 right-0 rounded-t-[2rem] border-t border-gray-100
+          md:bottom-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-2xl md:border
+          max-h-[92vh] md:max-h-[85vh] overflow-hidden
+          w-full pb-safe transition-transform duration-300 cubic-bezier(0.32, 0.72, 0, 1)`}
         role="dialog"
         aria-modal="true"
       >
+        {/* Mobile Drag Handle Area */}
+        <div
+          className="w-full flex justify-center pt-3 pb-1 md:hidden bg-white"
+          onClick={onClose}
+        >
+          <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
+        </div>
+
         {/* Header */}
         {(title || showCloseButton) && (
-          <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-sm z-10">
-            {/* Premium drag handle for mobile */}
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-14 h-1.5 bg-gradient-to-r from-gray-200 via-[#00B388] to-gray-200 rounded-full md:hidden shadow-sm" />
-
-            <h2 className="text-xl font-bold text-gray-900 mt-4 md:mt-0 gradient-text-vibrant animate-gradient">
-              {title}
-            </h2>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-white sticky top-0 z-10">
+            <h2 className="text-lg font-bold text-gray-900">{title}</h2>
 
             {showCloseButton && (
               <button
                 onClick={onClose}
-                className="text-gray-500 hover:text-gray-900 transition-smooth duration-200 p-2 rounded-xl hover:bg-gray-50 active-scale shadow-sm hover:shadow-md"
+                className="text-gray-400 hover:text-gray-900 transition-colors p-2 rounded-full hover:bg-gray-100"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -123,8 +132,8 @@ export default function Modal({
           </div>
         )}
 
-        {/* Content with custom scrollbar */}
-        <div className="overflow-y-auto p-6 max-h-[calc(90vh-5rem)] md:max-h-[calc(85vh-5rem)] animate-fade-in bg-white custom-scrollbar">
+        {/* Content */}
+        <div className="overflow-y-auto p-6 max-h-[calc(90vh-8rem)] md:max-h-[calc(85vh-5rem)] bg-white custom-scrollbar">
           {children}
         </div>
       </div>
