@@ -1,5 +1,12 @@
-// import nextPWA from "@ducanh2912/next-pwa";
+import withSerwistInit from "@serwist/next";
 import type { NextConfig } from "next";
+
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+  cacheOnNavigation: true,
+  disable: process.env.NODE_ENV === "development"
+});
 
 const nextConfig: NextConfig = {
   images: {
@@ -14,4 +21,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+export default withSerwist(nextConfig);
