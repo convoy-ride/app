@@ -3,28 +3,28 @@ import { ButtonHTMLAttributes, forwardRef } from "react";
 import { Loader2 } from "lucide-react";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-smooth focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer active-scale relative overflow-hidden group",
+  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none cursor-pointer active:scale-[0.98] relative overflow-hidden",
   {
     variants: {
       variant: {
         primary:
-          "gradient-primary text-white hover:shadow-glow focus:ring-[#00B388] animate-gradient before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700",
+          "bg-[#059669] text-white hover:bg-[#047857] focus:ring-[#059669] shadow-sm hover:shadow-md",
         secondary:
-          "gradient-secondary text-white hover:shadow-glow focus:ring-[#008E9C] animate-gradient",
+          "bg-[#475569] text-white hover:bg-[#334155] focus:ring-[#475569] shadow-sm hover:shadow-md",
         accent:
-          "bg-gradient-to-r from-[#00A68A] to-[#00D9A0] text-white hover:shadow-glow hover:from-[#008F75] hover:to-[#00B388] focus:ring-[#00A68A]",
+          "bg-[#f59e0b] text-white hover:bg-[#d97706] focus:ring-[#f59e0b] shadow-sm hover:shadow-md",
         neutral:
-          "bg-white text-gray-900 hover:bg-gray-50 focus:ring-gray-300 border border-gray-200 shadow-elevation-1 hover:shadow-elevation-3",
+          "bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-900 border border-gray-200 shadow-sm hover:shadow-md focus:ring-gray-200",
         ghost:
-          "bg-transparent text-[#00B388] hover:bg-[#00B388]/10 focus:ring-[#00B388]",
+          "bg-transparent text-[#059669] hover:bg-[#059669]/10 focus:ring-[#059669]",
         elevated:
-          "bg-white text-gray-900 border border-gray-100 shadow-elevation-3 hover:shadow-elevation-5 hover:-translate-y-1 focus:ring-[#00B388] transition-all duration-300"
+          "bg-white text-gray-900 border border-gray-100 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:ring-[#059669]"
       },
       size: {
-        sm: "px-4 py-2 text-sm rounded-lg",
-        md: "px-6 py-2.5 text-sm rounded-xl",
-        lg: "px-8 py-3.5 text-base rounded-2xl",
-        xl: "px-10 py-4 text-lg rounded-2xl"
+        sm: "px-3 py-1.5 text-sm",
+        md: "px-5 py-2.5 text-sm",
+        lg: "px-6 py-3 text-base",
+        xl: "px-8 py-4 text-lg"
       }
     },
     defaultVariants: {

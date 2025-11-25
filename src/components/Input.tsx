@@ -4,29 +4,29 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, forwardRef } from "react";
 
 const inputVariants = cva(
-  "w-full font-medium transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed placeholder:text-gray-400 text-gray-900 focus-ring",
+  "w-full font-medium transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed placeholder:text-gray-400 text-gray-900",
   {
     variants: {
       variant: {
         outline:
-          "bg-white border border-gray-200 focus:border-[#00B388] focus:ring-2 focus:ring-[#00B388]/20 hover:border-gray-300 shadow-elevation-1 focus:shadow-elevation-2",
+          "bg-white border border-gray-200 focus:border-[#059669] focus:ring-2 focus:ring-[#059669]/10 hover:border-gray-300 shadow-sm",
         filled:
-          "bg-gray-50 border border-transparent focus:bg-white focus:border-[#00B388] focus:ring-2 focus:ring-[#00B388]/20 hover:bg-gray-100 shadow-sm focus:shadow-elevation-2",
+          "bg-gray-50 border border-transparent focus:bg-white focus:border-[#059669] focus:ring-2 focus:ring-[#059669]/10 hover:bg-gray-100 shadow-sm",
         ghost:
-          "bg-transparent border-b-2 border-gray-200 focus:border-[#00B388] rounded-none px-0 hover:border-gray-300",
+          "bg-transparent border-b border-gray-200 focus:border-[#059669] rounded-none px-0 hover:border-gray-300",
         premium:
-          "bg-white border border-gray-200 focus:border-[#00B388] focus:ring-2 focus:ring-[#00B388]/30 shadow-elevation-2 hover:shadow-elevation-3 focus:shadow-elevation-4"
+          "bg-white border border-gray-200 focus:border-[#059669] focus:ring-2 focus:ring-[#059669]/10 shadow-md hover:shadow-lg transition-shadow"
       },
       size: {
         sm: "px-3 py-2 text-sm rounded-lg",
-        md: "px-4 py-2.5 text-sm rounded-xl",
-        lg: "px-5 py-3.5 text-base rounded-xl"
+        md: "px-4 py-2.5 text-sm rounded-lg",
+        lg: "px-5 py-3.5 text-base rounded-lg"
       },
       state: {
         default: "",
-        error: "border-red-300 focus:border-red-500 focus:ring-red-500/20",
+        error: "border-red-300 focus:border-red-500 focus:ring-red-500/10",
         success:
-          "border-green-300 focus:border-green-500 focus:ring-green-500/20"
+          "border-green-300 focus:border-green-500 focus:ring-green-500/10"
       }
     },
     defaultVariants: {

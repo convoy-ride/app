@@ -2,15 +2,6 @@
 
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-
-const Map = dynamic(() => import("@/components/Map"), {
-  ssr: false,
-  loading: () => (
-    <div className="h-full w-full bg-gray-100 animate-pulse rounded-2xl flex items-center justify-center">
-      <span className="text-gray-400 font-medium">Loading Map...</span>
-    </div>
-  )
-});
 import Modal from "@/components/Modal";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -71,6 +62,15 @@ const rideOptions = [
   }
 ];
 
+const Map = dynamic(() => import("@/components/Map"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full w-full bg-gray-100 animate-pulse rounded-2xl flex items-center justify-center">
+      <span className="text-gray-400 font-medium">Loading Map...</span>
+    </div>
+  )
+});
+
 export default function RiderHome() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showRides, setShowRides] = useState(false);
@@ -120,7 +120,7 @@ export default function RiderHome() {
       <div className="flex-1 relative">
         <Map
           center={[location.latitude, location.longitude]}
-          zoom={13}
+          zoom={20}
           size="full"
           markers={[currentLocationMarker]}
         />
@@ -162,14 +162,14 @@ export default function RiderHome() {
       <div className="hidden md:flex flex-col w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar shadow-elevation-4 pt-20">
         <div className="p-6 space-y-6">
           {/* Header */}
-          <div className="animate-slide-up">
+          {/* <div className="animate-slide-up">
             <h2 className="text-2xl font-black text-gray-900 mb-2">
               Welcome back! 👋
             </h2>
             <p className="text-sm text-gray-600 font-medium">
               Ready for your next journey?
             </p>
-          </div>
+          </div> */}
 
           {/* Promo Banner */}
           <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
