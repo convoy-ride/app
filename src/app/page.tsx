@@ -40,7 +40,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-12 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 pt-24 pb-12 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
